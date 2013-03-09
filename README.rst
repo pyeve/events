@@ -1,5 +1,5 @@
-PyEvents
-~~~~~~~~
+Events
+~~~~~~
 
 C#-Style Events in Python.
 
@@ -18,7 +18,7 @@ events. Technically, an event is a "slot" where callback functions (event
 handlers) can be attached to - a process referred to as subscribing to an
 event. To subscribe to an event: ::
 
-    from pyevents import Events
+    from events import Events
 
     events = Events()
     events.on_change += my_event_handler_for_on_change
@@ -65,32 +65,13 @@ is an issue, subclass Events and list the possible events, like: ::
         __events__ = ('on_this', 'on_that', ...)
 
 
-Installation
-------------
-PyEvents is on PyPI so all you need to do is
-
-::
-
-    pip install pyevents
-
-
-Testing
--------
-Just run
-
-::
-    
-    python setup.py test
-
-PyEvents has been tested successfully under Python 2.7 and Python 2.6.
-
 License
 -------
-PyEvents is BSD licensed. See the LICENSE_ for details.
+Events is BSD licensed. See the LICENSE_ for details.
 
 Attribution
 -----------
-Derived from the `original work` by Zoran Isailovski (Copyright 2005).
+Derived from the `original work`_ by Zoran Isailovski (Copyright 2005).
 
-.. _LICENSE: https://github.com/nicolaiarocci/pyevents/blob/master/LICENSE 
+.. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 
 .. _`original work`: http://code.activestate.com/recipes/410686/
