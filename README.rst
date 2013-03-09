@@ -1,8 +1,6 @@
 Events
 ~~~~~~
 
-C#-Style Events in Python.
-
 The concept of events is heavily used in GUI libraries and is the foundation
 for most implementations of the MVC (Model, View, Controller) design pattern
 (the latter being my prime motivation for this recipe). Another prominent use
@@ -71,7 +69,7 @@ Events is BSD licensed. See the LICENSE_ for details.
 
 Attribution
 -----------
-Derived from the `original work`_ by Zoran Isailovski (Copyright 2005).
+Based on the work done by `Zoran Isailovski`_ (Copyright 2005).
 
 .. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 
-.. _`original work`: http://code.activestate.com/recipes/410686/
+.. _`Zoran Isailovski`: http://code.activestate.com/recipes/410686/
