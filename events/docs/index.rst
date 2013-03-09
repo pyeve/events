@@ -2,12 +2,11 @@ Events: C#-Style Events in Python
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The concept of events is heavily used in GUI libraries and is the foundation
-for most implementations of the MVC (Model, View, Controller) design pattern
-(the latter being my prime motivation for this recipe). Another prominent use
-of events is in communication protocol stacks, where lower protocol layers need
-to inform upper layers of incoming data and the like. Here is a handy class
-that encapsulates the core to event subscription and event firing and feels
-like a "natural" part of the language.
+for most implementations of the MVC (Model, View, Controller) design pattern.
+Another prominent use of events is in communication protocol stacks, where
+lower protocol layers need to inform upper layers of incoming data and the
+like. Here is a handy class that encapsulates the core to event subscription
+and event firing and feels like a "natural" part of the language.
 
 Usage
 -----
@@ -55,10 +54,10 @@ The Events and _EventSlot classes provide some introspection support, too:
 This is usefull for ex. for an atomatic event subscription based on method
 name patterns.
 
-Note that the recipe does not check if an event that is being subscribed to
-can actually be fired, unless the class attribute __events__ is defined.
-This can cause a problem if an event name is slightly misspelled. If this
-is an issue, subclass Events and list the possible events, like: ::
+Note that by default Events does not check if an event that is being subscribed
+to can actually be fired, unless the class attribute __events__ is defined.
+This can cause a problem if an event name is slightly misspelled. If this is an
+issue, subclass Events and list the possible events, like: ::
 
     class MyEvents(Events):
         __events__ = ('on_this', 'on_that', ...)
@@ -67,9 +66,6 @@ is an issue, subclass Events and list the possible events, like: ::
 Attribution
 -----------
 Based on the excellent work done by `Zoran Isailovski`_ (Copyright 2005).
-
-.. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 
-.. _`Zoran Isailovski`: http://code.activestate.com/recipes/410686/ 
 
 Source Code
 -----------
@@ -82,3 +78,6 @@ This is an open source project by `Nicola Iarocci
 <http://nicolaiarocci.com>`_. See the original `LICENSE
 <https://github.com/nicolaiarocci/events/blob/master/LICENSE>`_ for more
 informations.
+
+.. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 
+.. _`Zoran Isailovski`: http://code.activestate.com/recipes/410686/ 
