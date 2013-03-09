@@ -19,9 +19,10 @@ event. To subscribe to an event: ::
     from events import Events
 
     events = Events()
-    events.on_change += my_event_handler_for_on_change
+    events.on_change += my_event_handler
 
-When the event is fired, all attached event handlers are invoked in
+As you can see, multiple callback functions can suscribe to the same
+event. When the event is fired, all attached event handlers are invoked in
 sequence. To fire the event, perform a call on the slot: ::
 
     events.on_change()
