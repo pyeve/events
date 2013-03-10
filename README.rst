@@ -33,7 +33,7 @@ Events is BSD licensed. See the LICENSE_ for details.
 
 Attribution
 -----------
-Based on the recipe by `Zoran Isailovski`_ (Copyright 2005).
+Based on the excellent recipe by `Zoran Isailovski`_ (Copyright 2005).
 
 .. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 
 .. _`Zoran Isailovski`: http://code.activestate.com/recipes/410686/

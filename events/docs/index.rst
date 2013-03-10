@@ -73,7 +73,7 @@ events, like: ::
 
 Attribution
 -----------
-Based on the excellent work done by `Zoran Isailovski`_ (Copyright 2005).
+Based on the excellent recipe by `Zoran Isailovski`_ (Copyright 2005).
 
 Source Code
 -----------
