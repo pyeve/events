@@ -43,7 +43,9 @@ class Events:
         return ev
 
     def __repr__(self):
-        return 'Events' + str(list(self))
+        return '<%s.%s object at %s>' % (self.__class__.__module__,
+                                         self.__class__.__name__,
+                                         hex(id(self)))
 
     __str__ = __repr__
 
