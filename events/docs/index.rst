@@ -15,16 +15,20 @@ events. Technically, an event is a "slot" where callback functions (event
 handlers) can be attached to - a process referred to as subscribing to an
 event. To subscribe to an event: ::
 
-    from events import Events
+    >>> def something_changed(reason):
+    ...     print "something changed because %s" % reason
+    ...
 
-    events = Events()
-    events.on_change += my_event_handler
+    >>> from events import Events
+    >>> events = Events()
+    >>> events.on_change += something_changed
 
-Multiple callback functions can suscribe to the same event. When the event is
+Multiple callback functions can subscribe to the same event. When the event is
 fired, all attached event handlers are invoked in sequence. To fire the event,
 perform a call on the slot: ::
 
-    events.on_change()
+    >>> events.on_change('it had to happen')
+    something changed because it had to happen
 
 Usually, instances of :class:`~events.Events` will not hang around loosely like
 above, but will typically be embedded in model objects, like here: ::
@@ -49,7 +53,7 @@ Similarly, view and controller objects will be the prime event subscribers: ::
 Introspection
 -------------
 The :class:`~events.Events` and :class:`~events._EventSlot` classes provide
-some introspection support. This is usefull for ex. for an atomatic event
+some introspection support. This is usefull for example for automatic event
 subscription based on method name patterns. ::
 
     >>> from events import Events
@@ -134,7 +138,7 @@ Source code is available at GitHub_.
 
 Attribution
 ===========
-Based on the excellent recipe by `Zoran Isailovski`_ (Copyright 2005).
+Based on the excellent recipe by `Zoran Isailovski`_, Copyright (c) 2005.
 
 Copyright Notice
 ================
