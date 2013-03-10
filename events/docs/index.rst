@@ -26,8 +26,8 @@ sequence. To fire the event, perform a call on the slot: ::
 
     events.on_change()
 
-Usually, instances of Events will not hang around loosely like above, but
-will typically be embedded in model objects, like here: ::
+Usually, instances of :class:`~events.Events` will not hang around loosely like
+above, but will typically be embedded in model objects, like here: ::
 
     class MyModel(object):
         def __init__(self):
@@ -46,18 +46,26 @@ Similarly, view and controller objects will be the prime event subscribers: ::
         def display_value(self):
             ...
 
-The Events and _EventSlot classes provide some introspection support, too:
+The :class:`~events.Events` and :class:`~events._EventSlot` classes provide
+some introspection support, too:
 
-    - Every event (aka event slot) has a __name__ attribute
-    - You can iterate through all registered events in Events instances
+    - Every event (aka event slot) has a :attr:`__name__` attribute
+    - You can get the number of events registered in :class:`~events.Events`.
+    - You can iterate through all registered events in :class:`~events.Events`
+      instances
+    - You can get the number of callbacks registered to a single event.
+    - You can iterate through all registered callbacks for an event, or
+      retrieve them by index.
+
 
 This is usefull for ex. for an atomatic event subscription based on method
 name patterns.
 
-Note that by default Events does not check if an event that is being subscribed
-to can actually be fired, unless the class attribute __events__ is defined.
-This can cause a problem if an event name is slightly misspelled. If this is an
-issue, subclass Events and list the possible events, like: ::
+Note that by default :class:`~events.Events` does not check if an event that is
+being subscribed to can actually be fired, unless the class attribute
+:attr:`__events__` is defined.  This can cause a problem if an event name is
+slightly misspelled. If this is an issue, subclass Events and list the possible
+events, like: ::
 
     class MyEvents(Events):
         __events__ = ('on_this', 'on_that', ...)
