@@ -66,7 +66,7 @@ class _EventSlot:
         self.__name__ = name
 
     def __repr__(self):
-        return 'event ' + self.__name__
+        return "event '%s'" % self.__name__
 
     def __call__(self, *a, **kw):
         for f in self.targets:
