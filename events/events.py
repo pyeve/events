@@ -83,3 +83,9 @@ class _EventSlot:
 
     def __len__(self):
         return len(self.targets)
+
+    def __iter__(self):
+        def gen():
+            for target in self.targets:
+                yield target
+        return gen()
