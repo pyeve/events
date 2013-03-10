@@ -4,11 +4,11 @@ from setuptools import setup, find_packages
 
 DESCRIPTION = ("C#-Style Events in Python")
 LONG_DESCRIPTION = open('README.rst').read()
-#VERSION = __import__('eve').__version__
+VERSION = __import__('events').__version__
 
 setup(
     name='Events',
-    version='0.1',
+    version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     author='Nicola Iarocci',
