@@ -80,3 +80,6 @@ class _EventSlot:
         while f in self.targets:
             self.targets.remove(f)
         return self
+
+    def __len__(self):
+        return len(self.targets)
