@@ -50,7 +50,7 @@ class Events:
     __str__ = __repr__
 
     def __len__(self):
-        return NotImplemented
+        return len(self.__dict__.items())
 
     def __iter__(self):
         def gen(dictitems=self.__dict__.items()):
