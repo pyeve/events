@@ -89,3 +89,10 @@ class _EventSlot:
             for target in self.targets:
                 yield target
         return gen()
+
+    def __getitem__(self, key):
+        return self.targets[key]
+
+
+
+
