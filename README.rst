@@ -36,6 +36,8 @@ Just run: ::
 
     python setup.py test
 
+The package has been tested under Python 2.6, Python 2.7 and Python 3.3.
+
 License
 -------
 Events is BSD licensed. See the LICENSE_ for details.

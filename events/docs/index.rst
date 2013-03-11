@@ -8,6 +8,8 @@ lower protocol layers need to inform upper layers of incoming data and the
 like. Here is a handy class that encapsulates the core to event subscription
 and event firing and feels like a "natural" part of the language.
 
+The package has been tested under Python 2.6, Python 2.7 and Python 3.3.
+
 Usage
 =====
 The C# language provides a handy way to declare, subscribe to and fire
