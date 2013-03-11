@@ -7,7 +7,7 @@ handlers) can be attached to - a process referred to as subscribing to an
 event. Here is a handy class that encapsulates the core to event subscription
 and event firing and feels like a “natural” part of the language. 
    
-.. code-block:: python
+.. code-block:: pycon
  
     >>> def something_changed(reason):
     ...     print "something changed because %s" % reason
@@ -21,7 +21,7 @@ Multiple callback functions can subscribe to the same event. When the event is
 fired, all attached event handlers are invoked in sequence. To fire the event,
 perform a call on the slot: 
 
-.. code-block:: python
+.. code-block:: pycon
 
     >>> events.on_change('it had to happen')
     'something changed because it had to happen'
