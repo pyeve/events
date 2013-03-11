@@ -92,7 +92,3 @@ class _EventSlot:
 
     def __getitem__(self, key):
         return self.targets[key]
-
-
-
-
