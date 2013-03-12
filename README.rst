@@ -1,5 +1,7 @@
 Python Events C#-Style
 ~~~~~~~~~~~~~~~~~~~~~~
+.. image:: https://secure.travis-ci.org/nicolaiarocci/events.png?branch=master 
+        :target: https://secure.travis-ci.org/nicolaiarocci/events
 
 The C# language provides a handy way to declare, subscribe to and fire
 events. Technically, an event is a "slot" where callback functions (event
