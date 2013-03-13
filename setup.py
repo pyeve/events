@@ -2,7 +2,7 @@
 
 from setuptools import setup, find_packages
 
-DESCRIPTION = ("C#-Style Events in Python")
+DESCRIPTION = ("Bringing the elegance of C# EventHanlder to Python")
 LONG_DESCRIPTION = open('README.rst').read()
 VERSION = __import__('events').__version__
 

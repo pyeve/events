@@ -1,19 +1,20 @@
-Python Events C#-Style
-~~~~~~~~~~~~~~~~~~~~~~
+Events
+~~~~~~
+*Bringing the elegance of C# EventHanlder to Python*
+
 .. image:: https://secure.travis-ci.org/nicolaiarocci/events.png?branch=master 
         :target: https://secure.travis-ci.org/nicolaiarocci/events
 
-The C# language provides a handy way to declare, subscribe to and fire
-events. Technically, an event is a "slot" where callback functions (event
-handlers) can be attached to - a process referred to as subscribing to an
-event. Here is a handy class that encapsulates the core to event subscription
-and event firing and feels like a “natural” part of the language. 
-   
+The C# language provides a handy way to declare, subscribe to and fire events.
+Technically, an event is a "slot" where callback functions (event handlers) can
+be attached to - a process referred to as subscribing to an event. Here is
+a handy package that encapsulates the core to event subscription and event
+firing and feels like a “natural” part of the language.
+
 .. code-block:: pycon
  
-    >>> def something_changed(reason):
-    ...     print "something changed because %s" % reason
-    ...
+    >>> def something_changed(reason): ...     print "something changed because
+    %s" % reason ...
 
     >>> from events import Events
     >>> events = Events()

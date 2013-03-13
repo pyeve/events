@@ -1,5 +1,6 @@
-Events in Python C#-Style 
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Events
+~~~~~~
+*Bringing the elegance of C# EventHanlder to Python*
 
 The concept of events is heavily used in GUI libraries and is the foundation
 for most implementations of the MVC (Model, View, Controller) design pattern.
