@@ -62,3 +62,4 @@ Based on the excellent recipe by `Zoran Isailovski`_, Copyright (c) 2005.
 
 .. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 
 .. _`Zoran Isailovski`: http://code.activestate.com/recipes/410686/
+.. _`Contribution Guidelines`: https://github.com/nicolaiarocci/events/blob/master/CONTRIBUTING.rst
