@@ -33,6 +33,12 @@ Documentation
 -------------
 Complete documentation is available at http://events.readthedocs.org
 
+Installing
+----------
+Events is on PyPI so all you need to do is: ::
+
+    pip install events
+
 Testing
 -------
 Just run: ::
@@ -44,6 +50,10 @@ The package has been tested under Python 2.6, Python 2.7 and Python 3.3.
 License
 -------
 Events is BSD licensed. See the LICENSE_ for details.
+
+Contributing
+------------
+Please see the `Contribution Guidelines`_.
 
 Attribution
 -----------

@@ -135,6 +135,20 @@ list the possible events, like: ::
     # this will raise a EventsException as `on_change` is unknown to MyEvents:
     events.on_change += changed     
 
+Installing
+==========
+Events is on PyPI so all you need to do is: ::
+
+    pip install events
+
+Testing
+=======
+Just run: ::
+
+    python setup.py test
+
+The package has been tested under Python 2.6, Python 2.7 and Python 3.3.
+
 Source Code
 ===========
 Source code is available at GitHub_.
