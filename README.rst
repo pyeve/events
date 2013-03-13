@@ -13,8 +13,9 @@ firing and feels like a “natural” part of the language.
 
 .. code-block:: pycon
  
-    >>> def something_changed(reason): ...     print "something changed because
-    %s" % reason ...
+    >>> def something_changed(reason): 
+    ...     print "something changed because %s" % reason 
+    ...
 
     >>> from events import Events
     >>> events = Events()
