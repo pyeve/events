@@ -17,6 +17,7 @@ setup(
     license=open('LICENSE').read(),
     platforms=["any"],
     packages=find_packages(),
+    include_package_data=True,
     test_suite="events.tests",
     install_requires=[],
     classifiers=[
