@@ -6,7 +6,8 @@ Here you can see the full list of changes between each Events release.
 Version 0.1.1
 -------------
 
-Not released yet.
+- Fixed a minor encoding issue which made installing on Windows/Python3
+  impossible (Eric Smith).
 
 Version 0.1.0
 -------------
