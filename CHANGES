@@ -3,7 +3,7 @@ Events Changelog
 
 Here you can see the full list of changes between each Events release.
 
-Version 0.1.1
+Version 0.2.0
 -------------
 
 - Fixed a minor encoding issue which made installing on Windows/Python3
