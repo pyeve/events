@@ -36,6 +36,10 @@ class Events:
             xxx.OnChange = event('OnChange')
     """
     def __getattr__(self, name):
+        if name.startswith('__'):
+            raise AttributeError("type object '%s' has no attribute '%s'" % \
+                                (self.__class__.__name__, name))
+
         if hasattr(self.__class__, '__events__'):
             if name not in self.__class__.__events__:
                 raise EventsException("Event '%s' is not declared" % name)
