@@ -3,6 +3,13 @@ Events Changelog
 
 Here you can see the full list of changes between each Events release.
 
+Version 0.2.1
+-------------
+
+Not released yet.
+
+- Prevent overriding of '__' attributes (Petr Jašek).
+
 Version 0.2.0
 -------------
 
