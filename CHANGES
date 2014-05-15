@@ -8,6 +8,8 @@ Version 0.2.1
 
 Not released yet.
 
+- Python 3.4 support.
+- tox support.
 - Prevent overriding of '__' attributes (Petr Jašek).
 
 Version 0.2.0
