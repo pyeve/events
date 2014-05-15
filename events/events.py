@@ -9,7 +9,7 @@
     Derived from the original work by Zoran Isailovski:
     http://code.activestate.com/recipes/410686/ - Copyright (c) 2005
 
-    :copyright: (c) 2013 by Nicola Iarocci.
+    :copyright: (c) 2014 by Nicola Iarocci.
     :license: BSD, see LICENSE for more details.
 """
 
