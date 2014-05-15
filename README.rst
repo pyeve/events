@@ -1,7 +1,5 @@
 Events
 ~~~~~~
-*Bringing the elegance of C# EventHanlder to Python*
-
 .. image:: https://secure.travis-ci.org/nicolaiarocci/events.png?branch=master 
         :target: https://secure.travis-ci.org/nicolaiarocci/events
 
