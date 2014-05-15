@@ -46,7 +46,7 @@ Just run: ::
 
     python setup.py test
 
-The package has been tested under Python 2.6, Python 2.7 and Python 3.3.
+Or use tox to test the package under all supported Pythons: 2.6, 2.7, 3.3, 3.4. 
 
 License
 -------
