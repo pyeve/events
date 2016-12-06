@@ -6,6 +6,7 @@ Here you can see the full list of changes between each Events release.
 Unreleased
 ----------
 
+- Limit events to only trigger current subscribers (Thomas Hanssen Nornes)
 - Docs: fix (Evan Klitzke)
 
 Version 0.2.1

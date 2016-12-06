@@ -73,7 +73,7 @@ class _EventSlot:
         return "event '%s'" % self.__name__
 
     def __call__(self, *a, **kw):
-        for f in self.targets:
+        for f in tuple(self.targets):
             f(*a, **kw)
 
     def __iadd__(self, f):
