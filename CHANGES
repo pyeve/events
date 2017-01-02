@@ -3,8 +3,10 @@ Events Changelog
 
 Here you can see the full list of changes between each Events release.
 
-Unreleased
-----------
+Version 0.2.2
+-------------
+
+Released on January 2, 2017.
 
 - Limit events to only trigger current subscribers (Thomas Hanssen Nornes)
 - Docs: fix (Evan Klitzke)
