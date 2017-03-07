@@ -13,7 +13,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     author='Nicola Iarocci',
     author_email='nicola@nicolaiarocci.com',
-    url='http://github.com/nicolaiarocci/events',
+    url='http://github.com/pyeve/events',
     license=open('LICENSE').read(),
     platforms=["any"],
     packages=find_packages(),

@@ -162,8 +162,7 @@ Copyright Notice
 This is an open source project by `Nicola Iarocci`_. See the original LICENSE_
 for more informations.
 
-.. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 
+.. _LICENSE: https://github.com/pyeve/events/blob/master/LICENSE 
 .. _`Zoran Isailovski`: http://code.activestate.com/recipes/410686/ 
-.. _GitHub: https://github.com/nicolaiarocci/events
+.. _GitHub: https://github.com/pyeve/events
 .. _`Nicola Iarocci`: http://nicolaiarocci.com
-.. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 

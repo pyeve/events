@@ -1,7 +1,7 @@
 Events
 ~~~~~~
-.. image:: https://secure.travis-ci.org/nicolaiarocci/events.png?branch=master 
-        :target: https://secure.travis-ci.org/nicolaiarocci/events
+.. image:: https://secure.travis-ci.org/pyeve/events.png?branch=master 
+        :target: https://secure.travis-ci.org/pyeve/events
 
 The C# language provides a handy way to declare, subscribe to and fire events.
 Technically, an event is a "slot" where callback functions (event handlers) can
@@ -58,6 +58,6 @@ Attribution
 -----------
 Based on the excellent recipe by `Zoran Isailovski`_, Copyright (c) 2005.
 
-.. _LICENSE: https://github.com/nicolaiarocci/events/blob/master/LICENSE 
+.. _LICENSE: https://github.com/pyeve/events/blob/master/LICENSE 
 .. _`Zoran Isailovski`: http://code.activestate.com/recipes/410686/
-.. _`Contribution Guidelines`: https://github.com/nicolaiarocci/events/blob/master/CONTRIBUTING.rst
+.. _`Contribution Guidelines`: https://github.com/pyeve/events/blob/master/CONTRIBUTING.rst
