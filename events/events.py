@@ -44,7 +44,7 @@ class Events:
                     break
             except:
                 raise AttributeError("type object %s is not iterable" %
-                                      (type(events)))
+                                     (type(events)))
             else:
                 self.__events__ = events
 

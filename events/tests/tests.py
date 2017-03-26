@@ -98,3 +98,27 @@ class TestEventSlot(TestBase):
         self.assertEqual(len(ev), 2)
         self.assertEqual(ev[0].__name__, 'callback2')
         self.assertEqual(ev[1].__name__, 'callback3')
+
+
+class TestInstanceEvents(TestBase):
+
+    def test_getattr(self):
+
+        MyEvents = Events(('on_eventOne', ))
+
+        try:
+            MyEvents.on_eventOne += self.callback1
+        except:
+            self.fail("Exception raised but not expected.")
+
+        try:
+            MyEvents.on_eventNotOne += self.callback1
+        except EventsException:
+            pass
+        else:
+            self.fail("'EventsException' excpected and not raised.")
+
+        try:
+            self.events.on_eventNotOne += self.callback1
+        except:
+            self.fail("Exception raised but not expected.")
