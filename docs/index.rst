@@ -132,8 +132,21 @@ list the possible events, like: ::
 
     events = MyEvents()
 
-    # this will raise a EventsException as `on_change` is unknown to MyEvents:
+    # this will raise an EventsException as `on_change` is unknown to MyEvents:
     events.on_change += changed     
+
+You can also predefine events for a single :class:`~events.Events` instance by 
+passing an iterator to the constructor. ::
+
+    events = Events(('on_this', 'on_that'))
+
+    # this will raise an EventsException as `on_change` is unknown to MyEvents:
+    events.on_change += changed
+
+Using both methods simultaneously is not recommended unless you know what you're
+doing. The constructor method is recommended for one time uses. For more 
+complicated use cases, it is recommended to subclass :class:`~events.Events`
+and define :attr:`__events__`.
 
 Installing
 ==========
