@@ -3,6 +3,12 @@ Events Changelog
 
 Here you can see the full list of changes between each Events release.
 
+Version 0.3
+-----------
+
+- Add support for defining event names in constructor. Closes #1 (Anfernee
+  Jervis).
+
 Version 0.2.2
 -------------
 

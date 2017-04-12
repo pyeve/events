@@ -132,8 +132,35 @@ list the possible events, like: ::
 
     events = MyEvents()
 
-    # this will raise a EventsException as `on_change` is unknown to MyEvents:
+    # this will raise an EventsException as `on_change` is unknown to MyEvents:
     events.on_change += changed     
+
+You can also predefine events for a single :class:`~events.Events` instance by 
+passing an iterator to the constructor. ::
+
+    events = Events(('on_this', 'on_that'))
+
+    # this will raise an EventsException as `on_change` is unknown to MyEvents:
+    events.on_change += changed
+
+It is recommended to use the constructor method for one time use cases. For more 
+complicated use cases, it is recommended to subclass :class:`~events.Events`
+and define :attr:`__events__`.
+
+You can also leverage both the constructor method and the :attr:`__events__`
+attribute to restrict events for specific instances: ::
+
+    DatabaseEvents(Events):
+        __events__ = ('insert', 'update', 'delete', 'select')
+
+    audit_events = ('select')
+
+    AppDatabaseEvents = DatabaseEvents()
+
+    # only knows the 'select' event from DatabaseEvents
+    AuditDatabaseEvents = DatabaseEvents(audit_events)
+ 
+
 
 Installing
 ==========

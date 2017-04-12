@@ -28,6 +28,30 @@ perform a call on the slot:
     >>> events.on_change('it had to happen')
     'something changed because it had to happen'
 
+By default, event.Events does not check if an event can be subscribed to and fired. 
+You can predefine these events by subclassing event.Events and listing them. Attempts to
+subscribe to or fire an undefined event will raise an EventsException.
+
+.. code-block:: pycon
+ 
+    >>> class MyEvents(Events):
+    ...     __events__ = ('on_this', 'on_that', )
+
+    >>> events = MyEvents()
+
+    # this will raise an EventsException as `on_change` is unknown to MyEvents:
+    >>> events.on_change += something_changed
+
+You can also predefine events for a single Events instance by passing an iterator to the constructor.
+
+.. code-block:: pycon
+
+    >>> events = Events(('on_this', 'on_that'))
+
+    # this will raise an EventsException as `on_change` is unknown to events:
+    >>> events.on_change += something_changed
+
+
 Documentation
 -------------
 Complete documentation is available at http://events.readthedocs.org

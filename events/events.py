@@ -35,14 +35,32 @@ class Events:
 
             xxx.OnChange = event('OnChange')
     """
+    def __init__(self, events=None):
+
+        if events is not None:
+
+            try:
+                for _ in events:
+                    break
+            except:
+                raise AttributeError("type object %s is not iterable" %
+                                     (type(events)))
+            else:
+                self.__events__ = events
+
     def __getattr__(self, name):
         if name.startswith('__'):
             raise AttributeError("type object '%s' has no attribute '%s'" %
                                  (self.__class__.__name__, name))
 
-        if hasattr(self.__class__, '__events__'):
+        if hasattr(self, '__events__'):
+            if name not in self.__events__:
+                raise EventsException("Event '%s' is not declared" % name)
+
+        elif hasattr(self.__class__, '__events__'):
             if name not in self.__class__.__events__:
                 raise EventsException("Event '%s' is not declared" % name)
+
         self.__dict__[name] = ev = _EventSlot(name)
         return ev
 
