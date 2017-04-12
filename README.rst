@@ -28,8 +28,8 @@ perform a call on the slot:
     >>> events.on_change('it had to happen')
     'something changed because it had to happen'
 
-By default, event.Events does not check if an event can be subscribed to and fired. 
-You can predefine these events by subclassing event.Events and listing them. Attempts to
+By default, Events does not check if an event can be subscribed to and fired. 
+You can predefine events by subclassing Events and listing them. Attempts to
 subscribe to or fire an undefined event will raise an EventsException.
 
 .. code-block:: pycon
