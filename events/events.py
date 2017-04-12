@@ -57,7 +57,7 @@ class Events:
             if name not in self.__events__:
                 raise EventsException("Event '%s' is not declared" % name)
 
-        if hasattr(self.__class__, '__events__'):
+        elif hasattr(self.__class__, '__events__'):
             if name not in self.__class__.__events__:
                 raise EventsException("Event '%s' is not declared" % name)
 

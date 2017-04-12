@@ -122,3 +122,22 @@ class TestInstanceEvents(TestBase):
             self.events.on_eventNotOne += self.callback1
         except:
             self.fail("Exception raised but not expected.")
+
+    def test_instance_restriction(self):
+
+        class MyEvents(Events):
+            __events__ = ('on_eventOne', 'on_eventTwo')
+
+        MyRestrictedInstance = MyEvents(('on_everyTwo', ))
+
+        try:
+            MyRestrictedInstance.on_everyTwo += self.callback1
+        except:
+            self.fail("Exception raised but not expected.")
+
+        try:
+            MyRestrictedInstance.on_everyOne += self.callback1
+        except:
+            pass
+        else:
+            self.fail("'EventsException' excpected and not raised.")
