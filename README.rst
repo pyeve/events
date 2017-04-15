@@ -68,7 +68,7 @@ Just run: ::
 
     python setup.py test
 
-Or use tox to test the package under all supported Pythons: 2.6, 2.7, 3.3, 3.4. 
+Or use tox to test the package under all supported Pythons: 2.6, 2.7, 3.3, 3.4, 3.5 and 3.6. 
 
 License
 -------
