@@ -6,6 +6,7 @@ Here you can see the full list of changes between each Events release.
 Version 0.3
 -----------
 
+- Add Python 3.5 and 3.6 to CI.
 - Add support for defining event names in constructor. Closes #1 (Anfernee
   Jervis).
 
