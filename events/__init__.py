@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from .events import Events, EventsException
 
-__version__ = '0.2.2'
+__version__ = '0.3'
 
 __all__ = [
     Events.__name__,
