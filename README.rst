@@ -51,6 +51,17 @@ You can also predefine events for a single Events instance by passing an iterato
     # this will raise an EventsException as `on_change` is unknown to events:
     >>> events.on_change += something_changed
 
+You can define default arguments for events
+    >>> from events import Events
+    >>> class MyClass(object):
+    ...     def __init__(self):
+    ...         self.events = Events(default=[str(self) + ": "])
+    ...         self.events.on_change += print
+    ...     def __str__(self):
+    ...         return self.__class__.__name__
+    >>> inst = MyClass()
+    >>> inst.events.on_change("Hello world!")
+    >>> inst.events.on_change("Bye world!")
 
 Documentation
 -------------

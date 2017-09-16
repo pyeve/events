@@ -35,8 +35,13 @@ class Events:
 
             xxx.OnChange = event('OnChange')
     """
-    def __init__(self, events=None):
-
+    def __init__(self, events=None, default=None, wrapper=None):
+        if not isinstance(default, (list, tuple)) and default is not None:
+            raise AttributeError("type object %s is not list" % (type(default)))
+        elif not callable(wrapper) and wrapper is not None:
+            raise AttributeError("type object %s is not function" % (type(wrapper)))
+        self._wrapper = wrapper
+        self._default = default
         if events is not None:
 
             try:
@@ -61,7 +66,7 @@ class Events:
             if name not in self.__class__.__events__:
                 raise EventsException("Event '%s' is not declared" % name)
 
-        self.__dict__[name] = ev = _EventSlot(name)
+        self.__dict__[name] = ev = _EventSlot(name, self._default, self._wrapper)
         return ev
 
     def __repr__(self):
@@ -72,35 +77,37 @@ class Events:
     __str__ = __repr__
 
     def __len__(self):
-        return len(self.__dict__.items())
+        return len([x for x in self.__dict__ if not x.startswith('_')])
 
     def __iter__(self):
         def gen(dictitems=self.__dict__.items()):
-            for attr, val in dictitems:
+            for _, val in dictitems:
                 if isinstance(val, _EventSlot):
                     yield val
         return gen()
 
 
 class _EventSlot:
-    def __init__(self, name):
+    def __init__(self, name, default=None, wrapper=None):
+        self._default = default or []
+        self._wrapper = wrapper or (lambda func, *args, **kwargs: func(*args, **kwargs))
         self.targets = []
         self.__name__ = name
 
     def __repr__(self):
         return "event '%s'" % self.__name__
 
-    def __call__(self, *a, **kw):
-        for f in tuple(self.targets):
-            f(*a, **kw)
+    def __call__(self, *args, **kwargs):
+        for function in tuple(self.targets):
+            self._wrapper(function, *self._default, *args, **kwargs)
 
-    def __iadd__(self, f):
-        self.targets.append(f)
+    def __iadd__(self, function):
+        self.targets.append(function)
         return self
 
-    def __isub__(self, f):
-        while f in self.targets:
-            self.targets.remove(f)
+    def __isub__(self, function):
+        while function in self.targets:
+            self.targets.remove(function)
         return self
 
     def __len__(self):
