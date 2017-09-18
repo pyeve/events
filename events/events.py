@@ -12,7 +12,7 @@
     :copyright: (c) 2014-2017 by Nicola Iarocci.
     :license: BSD, see LICENSE for more details.
 """
-
+from inspect import signature
 
 class EventsException(Exception):
     pass
@@ -99,7 +99,13 @@ class _EventSlot:
 
     def __call__(self, *args, **kwargs):
         for function in tuple(self.targets):
-            self._wrapper(function, *self._default, *args, **kwargs)
+            ckwargs = kwargs.copy()
+            params = signature(function).parameters
+            for key in kwargs:
+                if not key in params:
+                    del ckwargs[key]
+            cargs = args[:len(params)-len(ckwargs)]
+            self._wrapper(function, *self._default, *cargs, **ckwargs)
 
     def __iadd__(self, function):
         self.targets.append(function)
