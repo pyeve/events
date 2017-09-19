@@ -102,10 +102,12 @@ class _EventSlot:
             ckwargs = kwargs.copy()
             cargs = self._default + list(args)
             params = signature(function).parameters
-            for key in kwargs:
-                if not key in params:
-                    del ckwargs[key]
-            cargs = cargs[:len(params)-len(ckwargs)]
+            if not any(map(lambda x: x.kind == x.VAR_KEYWORD, params.values())):
+                for key in kwargs:
+                    if not key in params:
+                        del ckwargs[key]
+            if not any(map(lambda x: x.kind == x.VAR_POSITIONAL, params.values())):
+                cargs = cargs[:len(params)-len(ckwargs)]
             self._wrapper(function, *cargs, **ckwargs)
 
     def __iadd__(self, function):
