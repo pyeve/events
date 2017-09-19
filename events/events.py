@@ -100,12 +100,13 @@ class _EventSlot:
     def __call__(self, *args, **kwargs):
         for function in tuple(self.targets):
             ckwargs = kwargs.copy()
+            cargs = self._default + list(args)
             params = signature(function).parameters
             for key in kwargs:
                 if not key in params:
                     del ckwargs[key]
-            cargs = args[:len(params)-len(ckwargs)]
-            self._wrapper(function, *self._default, *cargs, **ckwargs)
+            cargs = cargs[:len(params)-len(ckwargs)]
+            self._wrapper(function, *cargs, **ckwargs)
 
     def __iadd__(self, function):
         self.targets.append(function)
