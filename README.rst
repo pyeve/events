@@ -52,6 +52,7 @@ You can also predefine events for a single Events instance by passing an iterato
     >>> events.on_change += something_changed
 
 A simple object-oriented example:
+
 .. code-block:: pychon
 
     >>> def new_person_on_stage(talking):
