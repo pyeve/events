@@ -51,6 +51,20 @@ You can also predefine events for a single Events instance by passing an iterato
     # this will raise an EventsException as `on_change` is unknown to events:
     >>> events.on_change += something_changed
 
+A simple object-oriented example:
+.. code-block:: pychon
+
+    >>> def new_person_on_stage(talking):
+    ...     print("There's someone new on stage talking:" % talking)
+
+    >>> class Person(Events):
+    ...    __events__ = ('on_greet',)
+    ...     def greet(self):
+    ...         self.on_greet("hans says's hello")
+
+    >>> hans = Person()
+    >>> hans.on_greet += new_person_on_stage
+    >>> hans.greet()
 
 Documentation
 -------------
