@@ -53,6 +53,27 @@ Similarly, view and controller objects will be the prime event subscribers: ::
         def display_value(self):
             ...
 
+
+Unsubscribing
+-------------
+
+There may come a time when you no longer want to be notified of an event. In this case,
+you unsubscribe in the natural counterpart to `+=` by using `-=`::
+
+
+    evts = Events()
+    evts.on_change += something_changed
+
+    # We no longer want to be notified, take us out of the event callback list
+    evts.on_change -= something_changed
+
+
+You may also want to unsubscribe for memory management reasons. The `Events()` instance
+will hold a reference `something_changed`. If this is a member method of an object,
+and the lifetime of the `Events()` instance is greater than that object, it will keep
+it around longer than would be the normal case.
+
+
 Introspection
 -------------
 The :class:`~events.Events` and :class:`~events._EventSlot` classes provide
