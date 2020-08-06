@@ -29,7 +29,7 @@ class TestEvents(TestBase):
         except EventsException:
             pass
         else:
-            self.fail("'EventsException' excpected and not raised.")
+            self.fail("'EventsException' expected and not raised.")
 
         try:
             self.events.on_eventNotOne += self.callback1
@@ -116,7 +116,7 @@ class TestInstanceEvents(TestBase):
         except EventsException:
             pass
         else:
-            self.fail("'EventsException' excpected and not raised.")
+            self.fail("'EventsException' expected and not raised.")
 
         try:
             self.events.on_eventNotOne += self.callback1
@@ -140,4 +140,4 @@ class TestInstanceEvents(TestBase):
         except:
             pass
         else:
-            self.fail("'EventsException' excpected and not raised.")
+            self.fail("'EventsException' expected and not raised.")
