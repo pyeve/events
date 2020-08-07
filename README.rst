@@ -52,6 +52,23 @@ You can also predefine events for a single Events instance by passing an iterato
     >>> events.on_change += something_changed
 
 
+Unsubscribing
+-------------
+
+There may come a time when you no longer want to be notified of an event. In this case,
+you unsubscribe in the natural counterpart to `+=` by using `-=`.
+
+.. code-block:: pycon
+
+    # We no longer want to be notified, take us out of the event callback list
+    >>> events.on_change -= something_changed
+
+
+You may also want to unsubscribe for memory management reasons. The `Events()` instance
+will hold a reference `something_changed`. If this is a member method of an object,
+and the lifetime of the `Events()` instance is greater than that object, it will keep
+it around longer than would be the normal case.
+
 Documentation
 -------------
 Complete documentation is available at http://events.readthedocs.org
