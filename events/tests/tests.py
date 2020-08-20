@@ -18,6 +18,9 @@ class TestBase(unittest.TestCase):
     def callback3(self):
         pass
 
+    def callback4(self, arg1, arg2):
+        self.assertEqual(arg1, "Default_1")
+        self.assertEqual(arg2, "Default_2")
 
 class TestEvents(TestBase):
     def test_getattr(self):
@@ -101,6 +104,10 @@ class TestEventSlot(TestBase):
 
 
 class TestInstanceEvents(TestBase):
+    def test_instance_default(self):
+        events = Events(default=["Default_1", "Default_2"])
+        events.on_event += self.callback4
+        events.on_event()
 
     def test_getattr(self):
 

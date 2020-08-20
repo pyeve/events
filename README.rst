@@ -51,6 +51,75 @@ You can also predefine events for a single Events instance by passing an iterato
     # this will raise an EventsException as `on_change` is unknown to events:
     >>> events.on_change += something_changed
 
+You can define default arguments for events
+
+.. code-block:: pycon
+
+    >>> from events import Events
+    >>> class MyClass(object):
+    ...     def __init__(self):
+    ...         self.events = Events(default=[str(self) + ": "])
+    ...         self.events.on_change += print
+    ...     def __str__(self):
+    ...         return self.__class__.__name__
+    >>> inst = MyClass()
+    >>> inst.events.on_change("Hello world!")
+    >>> inst.events.on_change("Bye world!")
+
+You can also declare a global wrap function that allows to insert all the events a 
+use is at the time of debugging or avoiding the execution of an event under certain 
+circumstances
+
+.. code-block:: pycon
+
+    >>> from events import Events
+    >>> def debug(func, *args, **kwargs):
+    ...     logging.debug("Trigger event: " + func.__name__)
+    ...     func(*args, **kwargs)
+    >>> class MyClass(object):
+    ...     def __init__(self):
+    ...         self.events = Events(wrapper=debug)
+    ...         self.events.on_change += print
+    ...     def __str__(self):
+    ...         return self.__class__.__name__
+    >>> inst = MyClass()
+    >>> inst.events.on_change("Hello world!")
+    >>> inst.events.on_change("Bye world!")
+
+Do not worry about sending exact parameters or fill your functions with * args, * 
+kwargs the functions are only calls with the parameters they need
+
+.. code-block:: pycon
+
+    >>> from events import Events
+    >>> class MyClass(object):
+    ...     def __init__(self):
+    ...         self.events = Events(default=[self])
+    ...         self.events.on_change += self.destroy
+    ...         self.events.on_change += self.paint
+    ...     def destroy(self):
+    ...         pass
+    ...     def paint(self):
+    ...         pass
+    ...     def __str__(self):
+    ...         return self.__class__.__name__
+    >>> def need1(arg):
+    ...    print(f"need1 {arg}")
+    >>> def need2(arg, arg2):
+    ...    print(f"need2 {arg} {arg2}")
+    >>> def need3(arg, arg3, named):
+    ...    print(f"need3 {arg} {arg3} {named}")
+    >>> def function(sender):
+    ...    print(sender)
+    ...    sender.paint()
+    >>> my_class = MyClass()
+    >>> my_class.events.on_change()
+    >>> my_class.events.on_change += function
+    >>> my_class.events.on_change()
+    >>> my_class.events.on_key += need1
+    >>> my_class.events.on_key += need2
+    >>> my_class.events.on_key += need3
+    >>> my_class.events.on_key('arg', 'arg2', arg3='arg3', named='named')
 
 Unsubscribing
 -------------

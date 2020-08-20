@@ -1,3 +1,6 @@
+# Editors
+.vscode
+
 # Python
 *.py[co]
 
