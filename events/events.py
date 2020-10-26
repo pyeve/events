@@ -69,7 +69,8 @@ class Events:
 
             xxx.OnChange = event('OnChange')
     """
-    def __init__(self, events=None):
+    def __init__(self, events=None, event_slot_cls=_EventSlot):
+        self.__event_slot_cls__ = event_slot_cls
 
         if events is not None:
 
@@ -95,7 +96,7 @@ class Events:
             if name not in self.__class__.__events__:
                 raise EventsException("Event '%s' is not declared" % name)
 
-        self.__dict__[name] = ev = _EventSlot(name)
+        self.__dict__[name] = ev = self.__event_slot_cls__(name)
         return ev
 
     def __repr__(self):
@@ -111,6 +112,6 @@ class Events:
     def __iter__(self):
         def gen(dictitems=self.__dict__.items()):
             for attr, val in dictitems:
-                if isinstance(val, _EventSlot):
+                if isinstance(val, self.__event_slot_cls__):
                     yield val
         return gen()

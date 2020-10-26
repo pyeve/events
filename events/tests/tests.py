@@ -54,6 +54,30 @@ class TestEvents(TestBase):
             self.assertTrue(isinstance(event, events.events._EventSlot))
         self.assertEqual(i, 2)
 
+    def test_iter_custom_event_slot_cls(self):
+        class CustomEventSlot(events.events._EventSlot):
+            pass
+        self.events = Events(event_slot_cls=CustomEventSlot)
+        self.events.on_change += self.callback1
+        self.events.on_change += self.callback2
+        self.events.on_edit += self.callback1
+        i = 0
+        for event in self.events:
+            i += 1
+            self.assertTrue(isinstance(event, CustomEventSlot))
+        self.assertEqual(i, 2)
+
+    def test_event_slot_cls_default(self):
+        self.assertEqual(
+            events.events._EventSlot, self.events.__event_slot_cls__)
+
+    def test_event_slot_cls_custom(self):
+        class CustomEventSlot(events.events._EventSlot):
+            pass
+
+        custom = Events(event_slot_cls=CustomEventSlot)
+        self.assertEqual(CustomEventSlot, custom.__event_slot_cls__)
+
 
 class TestEventSlot(TestBase):
     def setUp(self):
