@@ -14,6 +14,40 @@
 """
 
 
+class _EventSlot:
+    def __init__(self, name):
+        self.targets = []
+        self.__name__ = name
+
+    def __repr__(self):
+        return "event '%s'" % self.__name__
+
+    def __call__(self, *a, **kw):
+        for f in tuple(self.targets):
+            f(*a, **kw)
+
+    def __iadd__(self, f):
+        self.targets.append(f)
+        return self
+
+    def __isub__(self, f):
+        while f in self.targets:
+            self.targets.remove(f)
+        return self
+
+    def __len__(self):
+        return len(self.targets)
+
+    def __iter__(self):
+        def gen():
+            for target in self.targets:
+                yield target
+        return gen()
+
+    def __getitem__(self, key):
+        return self.targets[key]
+
+
 class EventsException(Exception):
     pass
 
@@ -80,37 +114,3 @@ class Events:
                 if isinstance(val, _EventSlot):
                     yield val
         return gen()
-
-
-class _EventSlot:
-    def __init__(self, name):
-        self.targets = []
-        self.__name__ = name
-
-    def __repr__(self):
-        return "event '%s'" % self.__name__
-
-    def __call__(self, *a, **kw):
-        for f in tuple(self.targets):
-            f(*a, **kw)
-
-    def __iadd__(self, f):
-        self.targets.append(f)
-        return self
-
-    def __isub__(self, f):
-        while f in self.targets:
-            self.targets.remove(f)
-        return self
-
-    def __len__(self):
-        return len(self.targets)
-
-    def __iter__(self):
-        def gen():
-            for target in self.targets:
-                yield target
-        return gen()
-
-    def __getitem__(self, key):
-        return self.targets[key]
