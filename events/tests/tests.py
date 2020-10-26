@@ -37,6 +37,9 @@ class TestEvents(TestBase):
             self.fail("Exception raised but not expected.")
 
     def test_len(self):
+        # We want __events__ to be set to verify that it is not counted as
+        # part of __len__.
+        self.events = Events(events=("on_change", "on_get"))
         self.events.on_change += self.callback1
         self.events.on_get += self.callback2
         self.assertEqual(len(self.events), 2)
