@@ -72,7 +72,7 @@ class Events:
     __str__ = __repr__
 
     def __len__(self):
-        return len(self.__dict__.items())
+        return len(list(self.__iter__()))
 
     def __iter__(self):
         def gen(dictitems=self.__dict__.items()):
