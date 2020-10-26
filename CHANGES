@@ -7,6 +7,8 @@ In development
 --------------
 
 - Add section on unsubscribing to documentation (Michael Kennedy)
+- Fix Events.__len__ counting __events__
+- Add event_slot_cls argument to Events to allow custom EventSlot class.
 
 Version 0.3
 -----------
