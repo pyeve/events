@@ -3,8 +3,9 @@
 from setuptools import setup, find_packages
 
 DESCRIPTION = ("Bringing the elegance of C# EventHandler to Python")
-LONG_DESCRIPTION = open('README.rst').read()
 VERSION = __import__('events').__version__
+with open("README.rst") as f:
+    LONG_DESCRIPTION = f.read()
 
 setup(
     name='Events',
@@ -14,7 +15,7 @@ setup(
     author='Nicola Iarocci',
     author_email='nicola@nicolaiarocci.com',
     url='http://github.com/pyeve/events',
-    license=open('LICENSE').read(),
+    license="BSD",
     platforms=["any"],
     packages=find_packages(),
     include_package_data=True,
@@ -28,12 +29,12 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
         'Topic :: Software Development',
     ],
 )

@@ -6,6 +6,13 @@ Here you can see the full list of changes between each Events release.
 In development
 --------------
 
+- hic sunt leones
+
+Version 0.4
+-----------
+
+Released on October 31, 2020
+
 - Add Python 3.7 and 3.8 to CI matrix.
 - Drop Python 2.6 and Python 3.3 and pypy from CI matrix.
 - Add section on unsubscribing to documentation (Michael Kennedy)
