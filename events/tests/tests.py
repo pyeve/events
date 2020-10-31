@@ -37,6 +37,9 @@ class TestEvents(TestBase):
             self.fail("Exception raised but not expected.")
 
     def test_len(self):
+        # We want __events__ to be set to verify that it is not counted as
+        # part of __len__.
+        self.events = Events(events=("on_change", "on_get"))
         self.events.on_change += self.callback1
         self.events.on_get += self.callback2
         self.assertEqual(len(self.events), 2)
@@ -50,6 +53,30 @@ class TestEvents(TestBase):
             i += 1
             self.assertTrue(isinstance(event, events.events._EventSlot))
         self.assertEqual(i, 2)
+
+    def test_iter_custom_event_slot_cls(self):
+        class CustomEventSlot(events.events._EventSlot):
+            pass
+        self.events = Events(event_slot_cls=CustomEventSlot)
+        self.events.on_change += self.callback1
+        self.events.on_change += self.callback2
+        self.events.on_edit += self.callback1
+        i = 0
+        for event in self.events:
+            i += 1
+            self.assertTrue(isinstance(event, CustomEventSlot))
+        self.assertEqual(i, 2)
+
+    def test_event_slot_cls_default(self):
+        self.assertEqual(
+            events.events._EventSlot, self.events.__event_slot_cls__)
+
+    def test_event_slot_cls_custom(self):
+        class CustomEventSlot(events.events._EventSlot):
+            pass
+
+        custom = Events(event_slot_cls=CustomEventSlot)
+        self.assertEqual(CustomEventSlot, custom.__event_slot_cls__)
 
 
 class TestEventSlot(TestBase):
