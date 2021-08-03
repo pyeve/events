@@ -88,7 +88,7 @@ Just run:
 
 Or use tox to test the package under all supported Pythons: 2.7, 3.4+
 
-Licenseing
+Licensing
 ----------
 Events is BSD licensed. See the LICENSE_ for details.
 
