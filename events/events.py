@@ -99,6 +99,9 @@ class Events:
         self.__dict__[name] = ev = self.__event_slot_cls__(name)
         return ev
 
+    def __getitem__(self, item):
+        return self.__dict__[item]
+
     def __repr__(self):
         return '<%s.%s object at %s>' % (self.__class__.__module__,
                                          self.__class__.__name__,
