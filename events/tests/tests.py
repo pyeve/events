@@ -118,6 +118,14 @@ class TestEventSlot(TestBase):
             pass
         else:
             self.fail("IndexError expected.")
+        self.assertIs(ev, self.events["on_edit"])
+        self.assertIsNot(ev, self.events["on_change"])
+        try:
+            self.events["on_nonexistent_event"]
+        except KeyError:
+            pass
+        else:
+            self.fail("KeyError expected.")
 
     def test_isub(self):
         self.events.on_change -= self.callback1
