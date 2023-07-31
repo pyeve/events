@@ -6,6 +6,11 @@ Here you can see the full list of changes between each Events release.
 In development
 --------------
 
+Version 0.5
+-----------
+
+Released on July 31, 2023
+
 - Added __getitem__ dunder to Events class. This allows the calling of events from strings, thus enabling dynamic events. See PR #25.
 
 Version 0.4
