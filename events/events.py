@@ -69,11 +69,11 @@ class Events:
 
             xxx.OnChange = event('OnChange')
     """
+
     def __init__(self, events=None, event_slot_cls=_EventSlot):
         self.__event_slot_cls__ = event_slot_cls
 
         if events is not None:
-
             try:
                 for _ in events:
                     break
@@ -82,6 +82,12 @@ class Events:
                                      (type(events)))
             else:
                 self.__events__ = events
+
+        if hasattr(self, '__events__'):
+            self.__dict__ = dict(
+                {name: self.__event_slot_cls__(name) for name in self.__events__},
+                **self.__dict__
+            )
 
     def __getattr__(self, name):
         if name.startswith('__'):

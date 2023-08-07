@@ -118,6 +118,13 @@ class TestEventSlot(TestBase):
             pass
         else:
             self.fail("IndexError expected.")
+
+    def test_getitem_bystring(self):
+
+        class MyEvents(Events):
+            __events__ = ('on_event_one', 'on_event_two')
+
+        ev = self.events.on_edit
         self.assertIs(ev, self.events["on_edit"])
         self.assertIsNot(ev, self.events["on_change"])
         try:
@@ -126,6 +133,32 @@ class TestEventSlot(TestBase):
             pass
         else:
             self.fail("KeyError expected.")
+        my_events = MyEvents()
+        self.assertIs(my_events.on_event_one, my_events["on_event_one"])
+        self.assertIs(my_events.on_event_two, my_events["on_event_two"])
+        try:
+            my_events["on_nonexistent_event"]
+        except KeyError:
+            pass
+        else:
+            self.fail("KeyError expected.")
+        events = Events()
+        try:
+            events["on_event_one"]
+        except KeyError:
+            pass
+        else:
+            self.fail("KeyError expected.")
+        events = Events(("on_event_three", "on_event_four"))
+        self.assertIs(events.on_event_three, events["on_event_three"])
+        self.assertIs(events.on_event_four, events["on_event_four"])
+        try:
+            events["on_event_one"]
+        except KeyError:
+            pass
+        else:
+            self.fail("KeyError expected.")
+
 
     def test_isub(self):
         self.events.on_change -= self.callback1
