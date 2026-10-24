@@ -48,7 +48,7 @@ class _EventSlot:
         return self.targets[key]
 
 
-class EventsException(Exception):
+class EventsException(AttributeError):
     pass
 
 
@@ -77,7 +77,7 @@ class Events:
             try:
                 for _ in events:
                     break
-            except:
+            except BaseException:
                 raise AttributeError("type object %s is not iterable" %
                                      (type(events)))
             else:

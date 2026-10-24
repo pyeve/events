@@ -28,6 +28,8 @@ perform a call on the slot:
 By default, Events does not check if an event can be subscribed to and fired.
 You can predefine events by subclassing Events and listing them. Attempts to
 subscribe to or fire an undefined event will raise an EventsException.
+EventsException is also an AttributeError, so hasattr() and getattr() with
+a default handle undeclared events using the standard attribute protocol.
 
 ::
 

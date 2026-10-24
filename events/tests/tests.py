@@ -33,7 +33,7 @@ class TestEvents(TestBase):
 
         try:
             self.events.on_eventNotOne += self.callback1
-        except:
+        except BaseException:
             self.fail("Exception raised but not expected.")
 
     def test_len(self):
@@ -143,7 +143,7 @@ class TestInstanceEvents(TestBase):
 
         try:
             MyEvents.on_eventOne += self.callback1
-        except:
+        except BaseException:
             self.fail("Exception raised but not expected.")
 
         try:
@@ -155,7 +155,7 @@ class TestInstanceEvents(TestBase):
 
         try:
             self.events.on_eventNotOne += self.callback1
-        except:
+        except BaseException:
             self.fail("Exception raised but not expected.")
 
     def test_instance_restriction(self):
@@ -167,12 +167,45 @@ class TestInstanceEvents(TestBase):
 
         try:
             MyRestrictedInstance.on_everyTwo += self.callback1
-        except:
+        except BaseException:
             self.fail("Exception raised but not expected.")
 
         try:
             MyRestrictedInstance.on_everyOne += self.callback1
-        except:
+        except BaseException:
             pass
         else:
             self.fail("'EventsException' expected and not raised.")
+
+
+class TestAttributeProtocol(TestBase):
+
+    def test_undeclared_instance_event_supports_attribute_checks(self):
+        restricted = Events(('on_change',))
+        self.assertIsNone(getattr(restricted, 'missing', None))
+        self.assertFalse(hasattr(restricted, 'missing'))
+        with self.assertRaises(AttributeError):
+            restricted.missing
+        with self.assertRaises(EventsException):
+            restricted.missing
+        self.assertNotIn('missing', restricted.__dict__)
+
+    def test_undeclared_class_event_supports_attribute_checks(self):
+        class Restricted(Events):
+            __events__ = ('on_change',)
+
+        restricted = Restricted()
+        self.assertIsNone(getattr(restricted, 'missing', None))
+        self.assertFalse(hasattr(restricted, 'missing'))
+        with self.assertRaises(AttributeError):
+            restricted.missing
+        with self.assertRaises(EventsException):
+            restricted.missing
+
+    def test_declared_event_still_subscribes_and_fires(self):
+        restricted = Events(('on_change',))
+        received = []
+        restricted.on_change += received.append
+        self.assertTrue(hasattr(restricted, 'on_change'))
+        restricted.on_change('value')
+        self.assertEqual(received, ['value'])
